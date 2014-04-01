@@ -5,10 +5,34 @@ body {
   text-color:white;
 }
 
+.btn {
+  background-color:#98ED00;
+  border-color:#B4F63D;
+  text-color:#639A00;
+}
+
+.btn .active {
+  background-color:#639A00;
+  text-color:#98ED00;
+}
+
 #header {
   background-color:#A34DD4;
 }
 
-h1 {
+#header h1 {
   color:#FFD600;
+}
+
+#header .lead {
+  color:#BFA830;
+}
+
+#deliveryForm label {
+  text-color:#639A00;
+}
+
+#deliveryForm input {
+  background-color:#98ED00;
+  text-color:#639A00;
 }
