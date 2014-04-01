@@ -11,44 +11,63 @@
   <link href="stylesheet.css" type="text/css" rel="stylesheet">
 </head>
 <body>
+  <div id="header" class="jumbotron">
+    <div class="container">
+      <h1>Cajun Food Delivery Service!</h1>
+      <p>Feast upon the glory of the Big Easy!</p>
+    </div><!--./container-->
+  </div><!--./jumbotron-->
   <div class="container">
     <div class="row">
-      <form>
-        <div class="form-group">
-          <label for="username">Name</label>
-          <input type="text" id="username">
-        </div><!--./form-group-->
-        <div class="form-group">
-          <label for="mainCourse">Main Course</label>
-          <select id="mainCourse" class="form-control">
-            <option value="11.99">Gumbo - $11.99</option>
-            <option value="13.99">Catfish - $13.99</option>
-            <option value="8.99">Jambalaya - $8.99</option> 
-          </select>
-          <label for="mainCourseQuantity">Quantity</label>
-          <input type="number" id="mainCourseQuantity" placeholder="1">
-        </div><!--./form-group-->
-        <div class="form-group">
-          <label for="sideDish">Side Dish</label>
-          <select id="sideDish" class="form-control">
-            <option value="3.99">Fried Pickles - $3.99</option>
-            <option value="2.99">Dirty Rice - $2.99</option>
-            <option value="0.99">Hush Puppy - $0.99</option>
-          </select>
-          <label for="sideDishQuantity">Quantity</label>
-          <input type="number" id="sideDishQuantity" placeholder="1">
-        </div><!--./form-group-->
-        <div class="form-group">
-          <label for="dessert">Dessert</label>
-          <select id="dessert" class="form-control">
-            <option value="4.99">Beignets - $4.99</option>
-            <option value="1.99">Pecan Pralines - $1.99</option>
-          </select>
-        </div><!--./form-group-->
-        <div class="form-group">
-          <button class="btn btn-default" onClick="placeOrder()">Order</button>
-        </div><!--./form-group-->
-      </form>
+      <div class="col-lg-2">
+      </div><!--./col-lg-2-->
+      <div class="col-lg-8">
+        <form>
+          <div class="form-group">
+            <label for="username">Name</label>
+            <input type="text" id="username">
+          </div><!--./form-group-->
+          <div class="form-group">
+            <label for="mainCourse">Main Course</label>
+            <select id="mainCourse" class="form-control">
+              <option value="11.99">Gumbo - $11.99</option>
+              <option value="13.99">Catfish - $13.99</option>
+              <option value="8.99">Jambalaya - $8.99</option> 
+            </select>
+            <label for="mainCourseQuantity">Quantity</label>
+            <input type="number" id="mainCourseQuantity" 
+                   class="form-control input-lg" placeholder="1">
+          </div><!--./form-group-->
+          <div class="form-group">
+            <label for="sideDish">Side Dish</label>
+            <select id="sideDish" class="form-control">
+              <option value="3.99">Fried Pickles - $3.99</option>
+              <option value="2.99">Dirty Rice - $2.99</option>
+              <option value="0.99">Hush Puppy - $0.99</option>
+            </select>
+            <label for="sideDishQuantity">Quantity</label>
+            <input type="number" id="sideDishQuantity" 
+                   class="form-control input-lg" placeholder="1">
+          </div><!--./form-group-->
+          <div class="form-group">
+            <label for="dessert">Dessert</label>
+            <select id="dessert" class="form-control">
+              <option value="4.99">Beignets - $4.99</option>
+              <option value="1.99">Pecan Pralines - $1.99</option>
+            </select>
+            <label for="dessertQuantity">Quantity</label>
+            <input type="number" id="dessertQuantity" class="form-control input-lg" placeholder="1">
+          </div><!--./form-group-->
+          <div class="form-group">
+            <button class="btn btn-default" onClick="placeOrder()">Order</button>
+          </div><!--./form-group-->
+        </form>
+      </div><!--./col-lg-8-->
+      <div class="col-lg-2">
+      </div><!--./col-lg-2-->
+    </div><!--./row-->
+    <div id="receiptDiv" class="row">
+      &nbsp;
     </div><!--./row-->
   </div><!--./container-->
 </body>

@@ -1,9 +1,14 @@
 /* stylesheet.css - stylesheet for webdev assignment 4 */
 
 body {
-  background-color:#EEE;
+  background-color:#62247F;
+  text-color:white;
 }
 
-h2 {
-  color:blue;
+#header {
+  background-color:#A34DD4;
+}
+
+h1 {
+  color:#FFD600;
 }
