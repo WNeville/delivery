@@ -59,6 +59,22 @@
           <div class="form-group">
             <!--TODO Credit Card type radio button-->
             <label for="cc">Credit Card Type</label>
+            <label>
+              <input type="radio" name="cc" value="MasterCard" id="cc_0">
+              MasterCard
+            </label>
+            <label>
+              <input type="radio" name="cc" value="Visa" id="cc_1">
+              Visa
+            </label>
+            <label>
+              <input type="radio" name="cc" value="American Express" id="cc_2">
+              American Express
+            </label>
+          </div><!--./form-group-->
+          <div class="form-group">
+            <label for="pickUp">For pick-up?</label>
+            <input type="checkbox" id="pickUp"></input>
           </div><!--./form-group-->
           <!--TODO Delivery or pick up check box (reflected in price)-->
           <div class="form-group">
@@ -74,8 +90,20 @@
     <div class="row">
       <div class="col-lg-2">
       </div><!--./col-lg-2-->
-      <div id="receiptDiv" class="col-lg-8">
+      <!--This is where the user's receipt goes-->
+      <div id="receiptDiv" class="col-lg-8"> 
+      </div><!--./col-lg-8-->
+      <div class="col-lg-2">
+      </div><!--./col-lg-2-->
+    </div><!--./row-->
+    <div class="row">
+      <div class="col-lg-2">
+      </div><!--./col-lg-2-->
+      <div id="foodImages" class="col-lg-8">
         <!--TODO INCLUDE IMAGES OF FOOD-->
+        <img class="foodImage" />
+        <img class="foodImage" />
+        <img class="foodImage" />
       </div><!--./col-lg-8-->
       <div class="col-lg-2">
       </div><!--./col-lg-2-->
