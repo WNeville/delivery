@@ -35,8 +35,7 @@
               <option value="8.99">Jambalaya - $8.99</option> 
             </select>
             <label for="mainCourseQuantity">Quantity</label>
-            <input type="number" id="mainCourseQuantity" 
-                   class="form-control input-lg" placeholder="1">
+            <input type="number" id="mainCourseQuantity" class="form-control" placeholder="1">
           </div><!--./form-group-->
           <div class="form-group">
             <label for="sideDish">Side Dish</label>
@@ -46,8 +45,7 @@
               <option value="0.99">Hush Puppy - $0.99</option>
             </select>
             <label for="sideDishQuantity">Quantity</label>
-            <input type="number" id="sideDishQuantity" 
-                   class="form-control input-lg" placeholder="1">
+            <input type="number" id="sideDishQuantity" class="form-control" placeholder="1">
           </div><!--./form-group-->
           <div class="form-group">
             <label for="dessert">Dessert</label>
@@ -56,18 +54,31 @@
               <option value="1.99">Pecan Pralines - $1.99</option>
             </select>
             <label for="dessertQuantity">Quantity</label>
-            <input type="number" id="dessertQuantity" class="form-control input-lg" placeholder="1">
+            <input type="number" id="dessertQuantity" class="form-control" placeholder="1">
           </div><!--./form-group-->
           <div class="form-group">
-            <button class="btn btn-default" onClick="placeOrder()">Order</button>
+            <!--TODO Credit Card type radio button-->
+            <label for="cc">Credit Card Type</label>
+          </div><!--./form-group-->
+          <!--TODO Delivery or pick up check box (reflected in price)-->
+          <div class="form-group">
+            <button type="button" class="btn btn-success btn-lg btn-block" onClick="placeOrder()">
+              <span class="glyphicon glyphicon-cutlery"></span>&nbsp;Order
+            </button>
           </div><!--./form-group-->
         </form>
       </div><!--./col-lg-8-->
       <div class="col-lg-2">
       </div><!--./col-lg-2-->
     </div><!--./row-->
-    <div id="receiptDiv" class="row">
-      &nbsp;
+    <div class="row">
+      <div class="col-lg-2">
+      </div><!--./col-lg-2-->
+      <div id="receiptDiv" class="col-lg-8">
+        <!--TODO INCLUDE IMAGES OF FOOD-->
+      </div><!--./col-lg-8-->
+      <div class="col-lg-2">
+      </div><!--./col-lg-2-->
     </div><!--./row-->
   </div><!--./container-->
 </body>

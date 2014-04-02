@@ -1,23 +1,13 @@
 /* stylesheet.css - stylesheet for webdev assignment 4 */
 
 body {
-  background-color:#62247F;
+  background-color:#B165D4;
   text-color:white;
 }
 
-.btn {
-  background-color:#98ED00;
-  border-color:#B4F63D;
-  text-color:#639A00;
-}
-
-.btn .active {
-  background-color:#639A00;
-  text-color:#98ED00;
-}
-
 #header {
-  background-color:#A34DD4;
+  background-color:#7806AA;
+  text-align:center;
 }
 
 #header h1 {
@@ -28,11 +18,7 @@ body {
   color:#BFA830;
 }
 
-#deliveryForm label {
-  text-color:#639A00;
-}
-
-#deliveryForm input {
-  background-color:#98ED00;
-  text-color:#639A00;
+#receiptDiv {
+  text-color:black;
+  text-align:center;
 }
