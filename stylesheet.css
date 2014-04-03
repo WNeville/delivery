@@ -22,3 +22,12 @@ body {
   text-color:black;
   text-align:center;
 }
+
+#buttonGroup {
+  float:right;
+}
+
+.foodImage {
+  height:300px;
+  width:300px;
+}

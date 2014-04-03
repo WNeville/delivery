@@ -28,11 +28,13 @@ function placeOrder() {
   var total = (mainCoursePrice * mainCourseQuantity) + (sideDishPrice * sideDishQuantity);
   total += (dessertPrice * dessertQuantity);
   total += (total * tax);
+  if(!forPickUp) {
+    total += 1; /* If delivery, add a $1 surcharge */ 
+  }
   if(userName != '') { 
     printReceipt(userName, mainCoursePrice, sideDishPrice, dessertPrice, mainCourseQuantity, 
                  sideDishQuantity, dessertQuantity, ccard, forPickUp, total);
-    /* revealImages commented until pictures are ready */
-    //revealImages(mainCoursePrice, sideDishPrice, dessertPrice);
+    revealImages(mainCoursePrice, sideDishPrice, dessertPrice);
   }
   else {
     var emptyNameMsg = "<h2>Please enter your name.</h2>";
@@ -101,6 +103,36 @@ function printReceipt(userName, mainCoursePrice, sideDishPrice, dessertPrice, ma
     document.getElementById('receiptDiv').innerHTML = (receiptContent);
   }
 }
+
+function calculateTotal() {
+  /* Grab form name and all values from form in relevant data types */ 
+  var formName           = document.forms[0];
+  var mainCoursePrice    = parseFloat(formName.mainCourse.value);
+  var sideDishPrice      = parseFloat(formName.sideDish.value);
+  var dessertPrice       = parseFloat(formName.dessert.value);
+  var mainCourseQuantity = parseInt(formName.mainCourseQuantity.value);
+  var sideDishQuantity   = parseInt(formName.sideDishQuantity.value);
+  var dessertQuantity    = parseInt(formName.dessertQuantity.value);
+  var forPickUp          = formName.pickUp.checked;
+
+  var tax = 0.035; /* Let's say tax is 3.5% */
+
+  var total = (mainCoursePrice * mainCourseQuantity) + (sideDishPrice * sideDishQuantity);
+  total += (dessertPrice * dessertQuantity);
+  total += (total * tax);
+  if(!forPickUp) {
+    total += 1; /* If delivery, add a $1 surcharge */ 
+  }
+  if(!isNaN(total) {
+    var receiptContent += "<p>Your total comes to: $" + (total.toFixed(2)) + "</p>";
+    document.getElementById('receiptDiv').innerHTML = receiptContent;
+  }
+  else {
+    var invalidOrderMsg = "<h2>Please enter a valid order.</h2>";
+    document.getElementById('receiptDiv').innerHTML = (invalidOrderMsg);  
+  }
+}
+
 
 function revealImages(mainCoursePrice, sideDishPrice, dessertPrice) {
   /* Images */

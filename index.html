@@ -1,3 +1,7 @@
+<!-- TODO: Download and edit food images (put on access) -->
+<!-- TODO: Add in jQuery functions (fade in food images, and something else?) -->
+<!-- TODO: Add in Restart button, add in Calculate total amount button -->
+<!-- TODO: Add in textbox for comments -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -13,7 +17,7 @@
 <body>
   <div id="header" class="jumbotron">
     <div class="container">
-      <h1>Uncle Jacques Cajun Food Delivery Service</h1>
+      <h1>Uncle Pierre's Cajun Food Delivery Service</h1>
       <p class="lead">Get a taste of the Big Easy delivered to the comfort of your own home!</p>
     </div><!--./container-->
   </div><!--./jumbotron-->
@@ -57,7 +61,6 @@
             <input type="number" id="dessertQuantity" class="form-control" placeholder="1">
           </div><!--./form-group-->
           <div class="form-group">
-            <!--TODO Credit Card type radio button-->
             <label for="cc">Credit Card Type</label>
             <label>
               <input type="radio" name="cc" value="MasterCard" id="cc_0">
@@ -76,9 +79,14 @@
             <label for="pickUp">For pick-up?</label>
             <input type="checkbox" id="pickUp"></input>
           </div><!--./form-group-->
-          <!--TODO Delivery or pick up check box (reflected in price)-->
-          <div class="form-group">
-            <button type="button" class="btn btn-success btn-lg btn-block" onClick="placeOrder()">
+          <div id="buttonGroup" class="form-group">
+            <button type="button" class="btn btn-success btn-lg" onClick="calculateTotal()">
+              Calculate Total
+            </button>
+            <button type="reset" class="btn btn-success btn-lg">
+              Start Over
+            </button>
+            <button type="button" class="btn btn-success btn-lg" onClick="placeOrder()">
               <span class="glyphicon glyphicon-cutlery"></span>&nbsp;Order
             </button>
           </div><!--./form-group-->
@@ -101,9 +109,9 @@
       </div><!--./col-lg-2-->
       <div id="foodImages" class="col-lg-8">
         <!--TODO INCLUDE IMAGES OF FOOD-->
-        <img class="foodImage" />
-        <img class="foodImage" />
-        <img class="foodImage" />
+        <img class="foodImage img-rounded" />
+        <img class="foodImage img-rounded" />
+        <img class="foodImage img-rounded" />
       </div><!--./col-lg-8-->
       <div class="col-lg-2">
       </div><!--./col-lg-2-->
