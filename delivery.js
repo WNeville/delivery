@@ -14,7 +14,7 @@ function placeOrder() {
   var dessertQuantity    = parseInt(formName.dessertQuantity.value);
   var ccard; /* Need for loop or conditional block to determine credit card */
   var forPickUp          = formName.pickUp.checked;
-
+  var comments           = formName.commentsBox.value;
   var tax = 0.035; /* Let's say tax is 3.5% */
 
   /* Determine credit card */
@@ -31,10 +31,19 @@ function placeOrder() {
   if(!forPickUp) {
     total += 1; /* If delivery, add a $1 surcharge */ 
   }
+
+  /* Error checking for username, then for fields (if total is NaN, there's an empty field) */
   if(userName != '') { 
-    printReceipt(userName, mainCoursePrice, sideDishPrice, dessertPrice, mainCourseQuantity, 
-                 sideDishQuantity, dessertQuantity, ccard, forPickUp, total);
-    revealImages(mainCoursePrice, sideDishPrice, dessertPrice);
+    /* checking that total > 1 in case all quantities are 0 (delivery fee adds $1) */
+    if(!isNaN(total) && total > 1) {
+      printReceipt(userName, mainCoursePrice, sideDishPrice, dessertPrice, mainCourseQuantity, 
+                 sideDishQuantity, dessertQuantity, ccard, forPickUp, comments, total);
+      revealImages(mainCoursePrice, sideDishPrice, dessertPrice);
+    }
+    else {
+      var invalidOrderMsg = "<h2>Please enter a valid order.</h2>";
+      document.getElementById('receiptDiv').innerHTML = (invalidOrderMsg); 
+    }
   }
   else {
     var emptyNameMsg = "<h2>Please enter your name.</h2>";
@@ -44,66 +53,67 @@ function placeOrder() {
 
 /* printReceipt() - given the user's total, print out their receipt in the document */
 function printReceipt(userName, mainCoursePrice, sideDishPrice, dessertPrice, mainCourseQuantity,
-                      sideDishQuantity, dessertQuantity, ccard, forPickUp, total) {
-  if(isNaN(total)) {
-    var invalidOrderMsg = "<h2>Please enter a valid order.</h2>";
-    document.getElementById('receiptDiv').innerHTML = (invalidOrderMsg); 
+                      sideDishQuantity, dessertQuantity, ccard, forPickUp, comments, total) {
+  var receiptContent = "<h2>Hi, " + userName + "!</h2><br><p>Here's your receipt:</p>";
+  var mainCourse;
+  var sideDish;
+  var dessert;
+ 
+  /* Determine main course */
+  if(mainCoursePrice == 11.99) {
+    mainCourse = "Gumbo";
+  }
+  else if(mainCoursePrice == 13.99) {
+    mainCourse = "Catfish";
   }
   else {
-    var receiptContent = "<h2>Hi, " + userName + "!</h2><br><p>Here's your receipt:</p>";
-    var mainCourse;
-    var sideDish;
-    var dessert;
-   
-    /* Determine main course */
-    if(mainCoursePrice == 11.99) {
-      mainCourse = "Gumbo";
-    }
-    else if(mainCoursePrice == 13.99) {
-      mainCourse = "Catfish";
-    }
-    else {
-      mainCourse = "Jambalaya";
-    }
-      
-    /* Determine side dish */
-    if(sideDishPrice == 3.99) {
-      sideDish = "Fried Pickles";
-    }
-    else if(sideDishPrice == 2.99) {
-      sideDish = "Dirty Rice";
-    }
-    else {
-      sideDish = "Hush Puppy";
-    }
-
-    /* Determine dessert */
-    if(dessertPrice == 4.99) {
-      dessert = "Beignets";
-    }
-    else {
-      dessert = "Pecan Pralines";
-    }
- 
-
-    receiptContent += "<p>Main course: " + mainCourse + " x " 
-                      + mainCourseQuantity + " @ " + mainCoursePrice + " each</p>";
-    receiptContent += "<p>Side dish: " + sideDish + " x " 
-                      + sideDishQuantity + " @ " + sideDishPrice + " each</p>";
-    receiptContent += "<p>Dessert: " + dessert + " x " 
-                      + dessertQuantity + " @ " + dessertPrice + " each</p>";
-    receiptContent += "<p>Your total comes to: $" + (total.toFixed(2)) + "</p>";
-    receiptContent += "<p>You will be paying by " + ccard + "</p>";
-    if(forPickUp == true) {
-      receiptContent += "<p>Your order is for pick up</p>";
-    }
-    else {
-      receiptContent += "<p>Your order is for delivery</p>";
-    }
-    document.getElementById('receiptDiv').innerHTML = (receiptContent);
+    mainCourse = "Jambalaya";
   }
+    
+  /* Determine side dish */
+  if(sideDishPrice == 3.99) {
+    sideDish = "Fried Pickles";
+  }
+  else if(sideDishPrice == 2.99) {
+    sideDish = "Dirty Rice";
+  }
+  else {
+    sideDish = "Hush Puppy";
+  }
+
+  /* Determine dessert */
+  if(dessertPrice == 4.99) {
+    dessert = "Beignets";
+  }
+  else {
+    dessert = "Pecan Pralines";
+  }
+
+
+  receiptContent += "<p>Main course: " + mainCourse + " x " 
+                    + mainCourseQuantity + " @ " + mainCoursePrice + " each</p>";
+  receiptContent += "<p>Side dish: " + sideDish + " x " 
+                    + sideDishQuantity + " @ " + sideDishPrice + " each</p>";
+  receiptContent += "<p>Dessert: " + dessert + " x " 
+                    + dessertQuantity + " @ " + dessertPrice + " each</p>";
+  receiptContent += "<p>Your total comes to: $" + (total.toFixed(2)) + "</p>";
+  receiptContent += "<p>You will be paying by " + ccard + "</p>";
+  
+  if(forPickUp == true) {
+    receiptContent += "<p>Your order is for pick up</p>";
+  }
+  else {
+    receiptContent += "<p>Your order is for delivery (+$1 post-tax)</p>";
+  }
+
+  if(comments != '') {
+    /* We don't, actually */
+    receiptContent += "<p>Thanks for your comments! We will take note of them!</p>"; 
+  }
+  document.getElementById('receiptDiv').innerHTML = (receiptContent);
 }
 
+/* calculateTotal() - display just the total to the user */j
 function calculateTotal() {
   /* Grab form name and all values from form in relevant data types */ 
   var formName           = document.forms[0];
@@ -123,8 +133,8 @@ function calculateTotal() {
   if(!forPickUp) {
     total += 1; /* If delivery, add a $1 surcharge */ 
   }
-  if(!isNaN(total) {
-    var receiptContent += "<p>Your total comes to: $" + (total.toFixed(2)) + "</p>";
+  if(!isNaN(total)) {
+    var receiptContent = "<p>Your total comes to: $" + (total.toFixed(2)) + "</p>";
     document.getElementById('receiptDiv').innerHTML = receiptContent;
   }
   else {
@@ -133,40 +143,36 @@ function calculateTotal() {
   }
 }
 
-
+/* revealImages() - upon clicking "Order Food", display images of the food they ordered */;
 function revealImages(mainCoursePrice, sideDishPrice, dessertPrice) {
-  /* Images */
-  var mainCourseImage = document.images[0].src;
-  var sideDishImage   = document.images[1].src;
-  var dessertImage    = document.images[2].src;
-
-  /* First image */
+  
+  /* First image Main Course*/
   if(mainCoursePrice == 11.99) {
-    mainCourseImage = "gumbo.png";
+    document.images[0].src = "gumbo.png";
   }
   else if(mainCoursePrice == 13.99) {
-    mainCourseImage = "catfish.png";
+    document.images[0].src = "catfish.png";
   }
   else {
-    mainCourseImage = "jambalaya.png";
+    document.images[0].src = "jambalaya.png";
   }
     
-  /* Determine side dish */
+  /* Second image Side Dish */
   if(sideDishPrice == 3.99) {
-    sideDishImage = "pickles.png";
+    document.images[1].src = "pickles.png";
   }
   else if(sideDishPrice == 2.99) {
-    sideDishImage = "rice.png";
+    document.images[1].src = "rice.png";
   }
   else {
-    sideDishImage = "hushpuppy.png";
+    document.images[1].src = "hushpuppy.png";
   }
 
-  /* Determine dessert */
+  /* Third image Dessert*/
   if(dessertPrice == 4.99) {
-    dessertImage = "beignet.png";
+    document.images[2].src = "beignet.png";
   }
   else {
-    dessertImage = "pralines.png";
+    document.images[2].src = "pralines.png";
   }
 }

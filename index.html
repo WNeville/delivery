@@ -1,7 +1,4 @@
-<!-- TODO: Download and edit food images (put on access) -->
 <!-- TODO: Add in jQuery functions (fade in food images, and something else?) -->
-<!-- TODO: Add in Restart button, add in Calculate total amount button -->
-<!-- TODO: Add in textbox for comments -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,7 +60,7 @@
           <div class="form-group">
             <label for="cc">Credit Card Type</label>
             <label>
-              <input type="radio" name="cc" value="MasterCard" id="cc_0">
+              <input type="radio" name="cc" value="MasterCard" id="cc_0" checked>
               MasterCard
             </label>
             <label>
@@ -78,6 +75,11 @@
           <div class="form-group">
             <label for="pickUp">For pick-up?</label>
             <input type="checkbox" id="pickUp"></input>
+          </div><!--./form-group-->
+          <div class="form-group">
+            <label for="commentsBox">Comments</label>
+            <textarea id="commentsBox"class="form-control" rows="3" placeholder="Yay food!">
+            </textarea>
           </div><!--./form-group-->
           <div id="buttonGroup" class="form-group">
             <button type="button" class="btn btn-success btn-lg" onClick="calculateTotal()">

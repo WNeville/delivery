@@ -27,7 +27,12 @@ body {
   float:right;
 }
 
+#foodImages {
+  width:100%;
+}
+
 .foodImage {
-  height:300px;
-  width:300px;
+  border-color:#B165D4;
+  height:33%;
+  width:33%;
 }
